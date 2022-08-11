@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { boxes } from "../data/boxData";
 
-
 const Contents = () => {
+  const ALOGRAND_QUERY = `
+  {
+    boxes {
+      images {
+        id
+        url
+      }
+      title
+      content
+    }
+  }
+  `;
+
+  useEffect(() => {
+    fetch(
+      "https://analytics-api.herokuapp.com/analytics",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: ALOGRAND_QUERY }),
+      }
+    )
+      .then((res) => res.json)
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <ContentsContainer>
       <h2>
@@ -31,7 +56,7 @@ const Contents = () => {
 export default Contents;
 
 const ContentsContainer = styled.section`
-  width: 1410px;
+  width: 90%;
   margin: 40px auto;
   display: flex;
   gap: 3rem;
@@ -54,6 +79,33 @@ const ContentsContainer = styled.section`
     align-items: center;
     gap: 3rem;
     grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 1422px) {
+    .boxes {
+      gap: 1rem;
+      row-gap: 3rem;
+    }
+  }
+  @media screen and (max-width: 1272px) {
+    .boxes {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media screen and (max-width: 972px) {
+    .boxes {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 762px) {
+    h2 {
+      font-size: 20px;
+      text-align: center;
+    }
+    .boxes {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
   }
 `;
 const Card = styled.div`
@@ -86,5 +138,11 @@ const Card = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 15px;
+  }
+  @media screen and (max-width: 1422px) {
+    width: 280px;
+  }
+  @media screen and (max-width: 762px) {
+    width: 100%;
   }
 `;

@@ -16,7 +16,7 @@ const Header = () => {
 export default Header;
 
 const HeaderCon = styled.nav`
-  width: 1410px;
+  width: 90%;
   margin: 0 auto;
   padding: 1rem;
   display: flex;
@@ -31,6 +31,18 @@ const HeaderCon = styled.nav`
     transition: 3s;
     &:hover {
       opacity: 0.8;
+    }
+  }
+  @media screen and (max-width: 462px) {
+    div{
+      width: 50%;
+    }
+    img {
+      width: 100%;
+    }
+    button {
+      padding: 10px 10px;
+      font-size: 12px;
     }
   }
 `;
