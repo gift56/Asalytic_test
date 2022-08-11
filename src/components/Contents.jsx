@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { boxes } from "../data/boxData";
 
+
 const Contents = () => {
   return (
     <ContentsContainer>
