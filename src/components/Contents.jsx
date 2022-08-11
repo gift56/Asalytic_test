@@ -17,16 +17,7 @@ const Contents = () => {
   `;
 
   useEffect(() => {
-    fetch(
-      "https://analytics-api.herokuapp.com/analytics",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: ALOGRAND_QUERY }),
-      }
-    )
-      .then((res) => res.json)
-      .then((data) => console.log(data));
+
   }, []);
 
   return (
