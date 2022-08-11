@@ -1,65 +1,13 @@
 import img from "../Images/items.png";
-export const boxes = [
+export const boxesdata = [
   {
     img: img,
     title: "Alogrand",
-    btnText:"Available"
-    
+    btnText: "Unavailable",
   },
   {
     img: img,
     title: "Alogrand",
-    btnText:"Available"
+    btnText: "Available",
   },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Available"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Available"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Unavailable"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Unavailable"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Unavailable"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Unavailable"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Unavailable"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Unavailable"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Unavailable"
-  },
-  {
-    img: img,
-    title: "Alogrand",
-    btnText:"Available"
-  },
- 
 ];

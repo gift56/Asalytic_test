@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GraphQLClient, gql } from "graphql-request";
 import * as ReactBootStrap from "react-bootstrap";
+import { boxesdata } from "../data/boxData";
 
 const graphcms = new GraphQLClient(
   "https://api-eu-west-2.hygraph.com/v2/cl6oxbn9i1cxu01szfsua6i6z/master"
@@ -54,6 +55,21 @@ const Contents = () => {
                 {box.content}
               </button>
             </Card>
+          ))}
+          {boxesdata.map((box, index) => (
+            <div key={index}>
+              <Card>
+                <img src={box.img} alt="/" />
+                <h3>{box.title}</h3>
+                <button
+                  className={
+                    box.btnText === "Available" ? "available" : "unavailable"
+                  }
+                >
+                  available
+                </button>
+              </Card>
+            </div>
           ))}
         </div>
       ) : (
