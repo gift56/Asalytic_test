@@ -1,11 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { boxes } from "../data/boxData";
+import { GraphQLClient, gql } from "graphql-request";
+import * as ReactBootStrap from "react-bootstrap";
 
-const Contents = () => {
-  const ALOGRAND_QUERY = `
+const graphcms = new GraphQLClient(
+  "https://api-eu-west-2.hygraph.com/v2/cl6oxbn9i1cxu01szfsua6i6z/master"
+);
+
+const QUERY = gql`
   {
     boxes {
+      id
       images {
         id
         url
@@ -14,10 +19,20 @@ const Contents = () => {
       content
     }
   }
-  `;
+`;
+const Contents = () => {
+  const [boxes, setboxes] = useState([]);
+  const [loading, setloading] = useState(false);
 
+  const fecthBoxes = async () => {
+    const { boxes } = await graphcms.request(QUERY);
+
+    setboxes(boxes);
+    setloading(true);
+  };
+  console.log(boxes);
   useEffect(() => {
-
+    fecthBoxes();
   }, []);
 
   return (
@@ -25,21 +40,27 @@ const Contents = () => {
       <h2>
         List of Algorand Standard Assets <span>on ASAlytics</span>
       </h2>
-      <div className="boxes">
-        {boxes.map((box, index) => (
-          <Card key={index}>
-            <img src={box.img} alt="/" />
-            <h3>{box.title}</h3>
-            <button
-              className={
-                box.btnText === "Available" ? "available" : "unavailable"
-              }
-            >
-              {box.btnText}
-            </button>
-          </Card>
-        ))}
-      </div>
+      {loading ? (
+        <div className="boxes">
+          {boxes.map((box, id) => (
+            <Card key={id}>
+              <img src={box.images.url} alt="/" />
+              <h3>{box.title}</h3>
+              <button
+                className={
+                  box.content === "Available" ? "available" : "unavailable"
+                }
+              >
+                {box.content}
+              </button>
+            </Card>
+          ))}
+        </div>
+      ) : (
+        <div className="d-flex justify-content-center">
+          <ReactBootStrap.Spinner animation="border" />
+        </div>
+      )}
     </ContentsContainer>
   );
 };
