@@ -15,7 +15,7 @@ const Header = () => {
 
 export default Header;
 
-const HeaderCon = styled.nav`
+const HeaderCon = styled.header`
   width: 90%;
   margin: 0 auto;
   padding: 1rem;
