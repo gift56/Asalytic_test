@@ -12,7 +12,7 @@ describe("Header", () => {
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toBeInTheDocument();
   });
-  test("should render if the button text if ANALYZE ASAs", () => {
+  test("should render if the button text is ANALYZE ASAs", () => {
     render(<Header />);
     const buttonTextElement = screen.getByText(/ANALYZE ASAs/i);
     expect(buttonTextElement).toBeInTheDocument();
