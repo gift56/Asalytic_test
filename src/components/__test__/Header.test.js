@@ -9,12 +9,7 @@ describe("Header", () => {
   });
   test("should render if the is a button text in the header", () => {
     render(<Header />);
-    const buttonElement = screen.getByRole("button");
+    const buttonElement = screen.getByRole("button", { name: /ANALYZE ASAs/i });
     expect(buttonElement).toBeInTheDocument();
-  });
-  test("should render if the button text is ANALYZE ASAs", () => {
-    render(<Header />);
-    const buttonTextElement = screen.getByText(/ANALYZE ASAs/i);
-    expect(buttonTextElement).toBeInTheDocument();
   });
 })
