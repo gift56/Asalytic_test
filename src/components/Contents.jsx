@@ -31,7 +31,7 @@ const Contents = () => {
     setboxes(boxes);
     setloading(true);
   };
-  console.log(boxes);
+
   useEffect(() => {
     fecthBoxes();
   }, []);
@@ -66,7 +66,7 @@ const Contents = () => {
                     box.btnText === "Available" ? "available" : "unavailable"
                   }
                 >
-                  available
+                  {box.btnText}
                 </button>
               </Card>
             </div>
