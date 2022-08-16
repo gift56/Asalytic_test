@@ -44,7 +44,7 @@ const Contents = () => {
       {loading ? (
         <div className="boxes">
           {boxes.map((box, id) => (
-            <Card key={id}>
+            <Card key={id} data-testid={`cardbox-item-${id}`}>
               <img src={box.images.url} alt="/" />
               <h3>{box.title}</h3>
               <button
@@ -73,7 +73,7 @@ const Contents = () => {
           ))}
         </div>
       ) : (
-        <div className="d-flex justify-content-center">
+        <div data-testid="spiner" className="d-flex justify-content-center">
           <ReactBootStrap.Spinner animation="border" />
         </div>
       )}
